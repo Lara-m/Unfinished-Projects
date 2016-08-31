@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/2.7.1/ember-runtime.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/2.7.1/ember-template-compiler.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/2.7.1/ember.debug.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember-data.js/2.7.0/ember-data.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember-localstorage-adapter/0.3.1/localstorage_adapter.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+		App = Ember.Application.create();
+		App.Router.map(function() {
+			this.route('books', { path: '/' });
+			this.route('author', { path: '/author/:author_id' });
+		});
+		{{outlet}}
+		</script>
+	</body>
+</html>

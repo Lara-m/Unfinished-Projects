@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ember App</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/2.7.1/ember-runtime.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/2.7.1/ember-template-compiler.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/2.7.1/ember.debug.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember-data.js/2.7.0/ember-data.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ember-localstorage-adapter/0.3.1/localstorage_adapter.js"></script>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<script type="text/javascript">
+			App = Ember.Application.create({
+				LOG_TRANSITIONS: true,
+				LOG_BINDINGS: true,
+				LOG_VIEW_LOOKUPS: true,
+				LOG_STACKTRACE_ON_DEPRECATION: true,
+				LOG_VERSION: true,
+				debugMode: true
+			});
+
+			App.ApplicationAdapter = DS.LSAdapter.extend();
+
+			App.Router.map(function () {
+				this.route('todos', { path: '/' }, function () {
+					this.route('active');
+					this.route('completed');
+				});
+			});
+
+		</script>
+
+		<script type="text/x-handlebars">
+			<section id="todoapp">
+				<header id="header">
+					<h1>todos</h1>
+					<input type="text" id="new-todo" placeholder="What needs to be done?" />
+				</header>
+
+				<section id="main">
+					<ul id="todo-list">
+						<li class="completed">
+							<input type="checkbox" class="toggle">
+							<label>Learn Ember.js</label>
+							<button class="destroy"></button>
+						</li>
+						<li>
+							<input type="checkbox" class="toggle">
+							<label>...</label>
+							<button class="destroy"></button>
+						</li>
+						<li>
+							<input type="checkbox" class="toggle">
+							<label>Profit!</label>
+							<button class="destroy"></button>
+						</li>
+					</ul>
+
+					<input type="checkbox" id="toggle-all">
+				</section>
+
+				<footer id="footer">
+					<span id="todo-count">
+						<strong>2</strong> todos left
+					</span>
+					<ul id="filters">
+						<li>
+							<a href="all" class="selected">All</a>
+						</li>
+						<li>
+							<a href="active">Active</a>
+						</li>
+						<li>
+							<a href="completed">Completed</a>
+						</li>
+					</ul>
+
+					<button id="clear-completed">
+						Clear completed (1)
+					</button>
+				</footer>
+			</section>
+
+			<footer id="info">
+				<p>Double-click to edit a todo</p>
+			</footer>
+		</script>
+
+</body>
+</html>
